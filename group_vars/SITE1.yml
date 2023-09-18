@@ -1,9 +1,6 @@
 ---
-ntp:
-  local_interface:
-    name: Management1
-    vrf: MGMT
-  servers:
-    - name: 1.1.1.1
-      local_interface: Management1
-      vrf: MGMT
+# ntp:
+#   servers:
+#     - name: 1.1.1.1
+#       local_interface: Management1
+#       vrf: MGMT

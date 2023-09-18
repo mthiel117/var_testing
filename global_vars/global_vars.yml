@@ -1,9 +1,9 @@
 ---
 ntp:
-  local_interface:
-    name: Management1
-    vrf: MGMT
   servers:
-    - name: 2.2.2.2
+    - name: "{{ ntp_servers[0] }}"
+      local_interface: Management1
+      vrf: MGMT
+    - name: "{{ ntp_servers[1] }}"
       local_interface: Management1
       vrf: MGMT
