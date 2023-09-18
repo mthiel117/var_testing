@@ -1,0 +1,10 @@
+---
+- name: Test Variables
+  hosts: s1-spine1
+  gather_facts: false
+
+  tasks:
+
+    - name: Test Vars.
+      debug:
+        msg: "{{ ntp.servers[0].name }}"
