@@ -31,4 +31,5 @@
     - name: Print variables
       debug:
         # msg: "{{ ntp_servers }}"
+        # AVD Data Model for NTP
         msg: "{{ ntp }}"
