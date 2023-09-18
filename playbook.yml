@@ -2,10 +2,15 @@
 - name: Test Variables (Play 1)
   hosts: localhost
   gather_facts: false
-  vars_files:
-    - HNB_Globals.yml
+  # vars_files:
+  #   - HNB_Globals.yml
 
   tasks:
+
+    - name: Import Global Vars
+      ansible.builtin.include_vars: "{{ item }}"
+      with_items:
+        - "HNB_Globals.yml"
 
     # - name: "Read yml file"
     #   ansible.builtin.shell: "cat HNB_Globals.yml"
