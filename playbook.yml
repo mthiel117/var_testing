@@ -1,9 +1,7 @@
 ---
 - name: Test Variables (Play 1)
-  hosts: localhost
+  hosts: s1-spine1
   gather_facts: false
-  # vars_files:
-  #   - HNB_Globals.yml
 
   tasks:
 
@@ -11,25 +9,18 @@
       ansible.builtin.include_vars: "{{ item }}"
       with_items:
         - "HNB_Globals.yml"
-
-    # - name: "Read yml file"
-    #   ansible.builtin.shell: "cat HNB_Globals.yml"
-    #   register: hnb_globals
-
-    # - name: "Parse yml into variables"
-    #   set_fact:
-    #     hnb_global_vars: "{{ hnb_globals.stdout | from_yaml }}"
-    #     ntp_server_1: hnb_global_vars.ntp_servers[0]
-    #     ntp_server_2: hnb_global_vars.ntp_servers[1]
-
-    # - name: Test Vars.
-    #   debug:
-    #     # msg: "{{ ntp.servers[0].name }}"
-    #     msg: "{{ hnb_global_vars.ntp_servers }}"
-    #     # msg: "{{ ntp_server_1 }} and {{ ntp_server_2 }}"
+      delegate_to: localhost
 
     - name: Print variables
       debug:
         # msg: "{{ ntp_servers }}"
         # AVD Data Model for NTP
         msg: "{{ ntp }}"
+
+    # - name: Generate Structured Variables per Device
+    #   ansible.builtin.import_role:
+    #     name: arista.avd.eos_designs
+
+    # - name: Generate Intended Config and Documentation
+    #   ansible.builtin.import_role:
+    #     name: arista.avd.eos_cli_config_gen
